@@ -1,0 +1,41 @@
+# Connecting to the grid {#connection-to-the-grid}
+
+
+1. Open terminal (on a mac) or a Putty session (on Windows: https://www.chiark.greenend.org.uk/~sgtatham/putty/)
+
+2. Type ‘ssh yourusername@ccn00.psy.gla.ac.uk’ and enter your password when asked (on a mac) or connect to host 'ccn00.psy.gla.ac.uk' with your user name and password on Putty (on Windows)
+
+Windows: connect to host ccn00.psy.gla.ac.uk
+Terminal will prompt for account name: your user name
+Then password: password
+Then type vncserver 
+Make a new password.
+Verify the password 
+Use 
+https://www.tightvnc.com/download.php
+
+3. Type ‘vncserver’ in the terminal window (Putty should now put up a terminal window on Windows as well)
+
+4. Make a note of your display number (e.g. cn00.psy.gla.ac.uk:38)
+
+5. Start your vnc client (chickenVNC for mac and tightVNC or realVNC for Windows - can be downloaded for free https://www.tightvnc.com/download.php)
+
+6. Type ‘ccn00’ in the host box and your display number in the display box (for mac) or ‘ccn00:display number’ in the server/host box (for Windows)
+
+7. Enter your password
+
+8. You should now see a desktop of the master node
+
+9. Open a terminal in this new environment (the terminal option is in the Applications-System-Tools menu - in some instances a terminal shortcut might already exist in your navigation bar on the very top)
+
+10. Connect to a free node (check node availability at ccn00.psy.gla.ac.uk/ganglia/) by typing ‘ssh compute-X-Y’ where X, Y will correspond to the node ID from the link above
+
+11. Set display environment by typing ‘setenv DISPLAY ccn00:43.0
+
+12. To start matlab type ‘matlab &’
+
+13. To start FSL first type ‘source /usr/local/bin/fsl’ then type ‘fsl &’
+
+You can access our lab server in a terminal by typing: ‘cd /analyse/Project0130/’
+Once you setup your jobs you can simply close the desktop window (and even shutdown your personal computer). This will not kill the jobs you have started on the grid. You can log back in to check the progress of your jobs by following steps 6-8 above while using the same display number as before.
+To kill you vncsession all together (this will kill any jobs that might be running) simply type: ‘vncserver -kill :yourdisplaynumber’

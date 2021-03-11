@@ -1,0 +1,461 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={241 Lab Book},
+  pdfauthor={Ralitsa Kostova},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{booktabs}
+\usepackage{amsthm}
+\makeatletter
+\def\thm@space@setup{%
+  \thm@preskip=8pt plus 2pt minus 4pt
+  \thm@postskip=\thm@preskip
+}
+\makeatother
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{241 Lab Book}
+\author{Ralitsa Kostova}
+\date{2021-03-11}
+
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"bookdown"}\NormalTok{)}
+\CommentTok{# or the development version}
+\CommentTok{# devtools::install_github("rstudio/bookdown")}
+\end{Highlighting}
+\end{Shaded}
+
+Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading \texttt{\#}.
+
+To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): \url{https://yihui.name/tinytex/}.
+
+\hypertarget{intro}{%
+\chapter{Introduction}\label{intro}}
+
+You can label chapter and section titles using \texttt{\{\#label\}} after them, e.g., we can reference Chapter \ref{intro}. If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \ref{methods}.
+
+Figures and tables with captions will be placed in \texttt{figure} and \texttt{table} environments, respectively.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\FloatTok{.1}\NormalTok{, }\FloatTok{.1}\NormalTok{))}
+\KeywordTok{plot}\NormalTok{(pressure, }\DataTypeTok{type =} \StringTok{'b'}\NormalTok{, }\DataTypeTok{pch =} \DecValTok{19}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+
+{\centering \includegraphics[width=0.8\linewidth]{bookdown-demo_files/figure-latex/nice-fig-1} 
+
+}
+
+\caption{Here is a nice figure!}\label{fig:nice-fig}
+\end{figure}
+
+Reference a figure by its code chunk label with the \texttt{fig:} prefix, e.g., see Figure \ref{fig:nice-fig}. Similarly, you can reference tables generated from \texttt{knitr::kable()}, e.g., see Table \ref{tab:nice-tab}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(}
+  \KeywordTok{head}\NormalTok{(iris, }\DecValTok{20}\NormalTok{), }\DataTypeTok{caption =} \StringTok{'Here is a nice table!'}\NormalTok{,}
+  \DataTypeTok{booktabs =} \OtherTok{TRUE}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}
+
+\caption{\label{tab:nice-tab}Here is a nice table!}
+\centering
+\begin{tabular}[t]{rrrrl}
+\toprule
+Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
+\midrule
+5.1 & 3.5 & 1.4 & 0.2 & setosa\\
+4.9 & 3.0 & 1.4 & 0.2 & setosa\\
+4.7 & 3.2 & 1.3 & 0.2 & setosa\\
+4.6 & 3.1 & 1.5 & 0.2 & setosa\\
+5.0 & 3.6 & 1.4 & 0.2 & setosa\\
+\addlinespace
+5.4 & 3.9 & 1.7 & 0.4 & setosa\\
+4.6 & 3.4 & 1.4 & 0.3 & setosa\\
+5.0 & 3.4 & 1.5 & 0.2 & setosa\\
+4.4 & 2.9 & 1.4 & 0.2 & setosa\\
+4.9 & 3.1 & 1.5 & 0.1 & setosa\\
+\addlinespace
+5.4 & 3.7 & 1.5 & 0.2 & setosa\\
+4.8 & 3.4 & 1.6 & 0.2 & setosa\\
+4.8 & 3.0 & 1.4 & 0.1 & setosa\\
+4.3 & 3.0 & 1.1 & 0.1 & setosa\\
+5.8 & 4.0 & 1.2 & 0.2 & setosa\\
+\addlinespace
+5.7 & 4.4 & 1.5 & 0.4 & setosa\\
+5.4 & 3.9 & 1.3 & 0.4 & setosa\\
+5.1 & 3.5 & 1.4 & 0.3 & setosa\\
+5.7 & 3.8 & 1.7 & 0.3 & setosa\\
+5.1 & 3.8 & 1.5 & 0.3 & setosa\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+You can write citations, too. For example, we are using the \textbf{bookdown} package \citep{R-bookdown} in this sample book, which was built on top of R Markdown and \textbf{knitr} \citep{xie2015}.
+
+\hypertarget{EEG-setup}{%
+\chapter{EEG-setup}\label{EEG-setup}}
+
+Steps in short:
+
+\begin{itemize}
+\tightlist
+\item
+  Head size.
+\item
+  Cz position.
+\item
+  Cap on.
+\item
+  Alcohol wipe skin.
+\item
+  Attach 3 electrodes.
+\item
+  Full all with gel.
+\item
+  Rub all.
+\item
+  Fill again.
+\item
+  Go inside, attach to amps.
+\item
+  Green = Amp1, yellow = Amp2.
+\item
+  Amps on.
+\item
+  Check Ground, Ref, forehead (fix)
+\item
+  Check impedance at 0-100, then 0-50, and 0-20 scale.
+\item
+  Fix half head - fill with gel.
+\item
+  Fix other half - fill with gel.
+\item
+  Repeat rub and fill if necessary.
+\item
+  Show teeth clenching and eye squeeze.
+\item
+  Eye-calibration.
+\item
+  Save impedance.
+\item
+  Start task.
+\end{itemize}
+
+Steps detailed:
+
+\begin{itemize}
+\tightlist
+\item
+  Sit the participant on a chair outside the booth.
+\item
+  Measure head circumference just above the eyebrows.
+\item
+  Measure the position of Cz electrode.
+\item
+  Take the middle point between the nasion and the inion and mark it.
+\item
+  Take the middle point between the ears and align with the first point, make a bigger mark on the skin.
+\item
+  Use the cap with appropriate size and position by adjusting Cz, so that the mark is visible.
+\item
+  Pull the cap down tight, strap, and if necessary use the chest strap.
+\item
+  Clean the skin above the left eyebrow, just left of the chin, and behind the left ear with alcohol wipes.
+\item
+  Attach the stickers to the 3 loose electrodes and attach the electrodes to the cleaned areas.
+\item
+  Fill wach electrode with a syringe by holding pushin the electrodes close to the head, do not use too much gel.
+\item
+  Avoid connecting electrodes with hair strands.
+\item
+  Rub each hole with a cotton bud.
+\item
+  Fill each electrode once again.
+\item
+  Go inside the booth and attach the amp1 to the cable with green dot and amp2 to the cable with yellow.
+\item
+  Turn the amps on.
+\item
+  Check the ground, reference, and forehead impedance.
+\item
+  Go to Data and check the impedance of the rest of the electrodes by changing the scale from 0-100, then 0-50, and then 0-20
+\item
+  Aim for green/yellow dots by sideways motion (separates hair), or circling motion (rubs gel), or 360 degree motion (consistently improves impedance).
+\item
+  Show the participant the monitoring mode to explain what clencing the teeth, and squeezing the eyes does, and why it should be avoided.
+\item
+  Staying with their teeth slightly apart helps.
+\item
+  Explain what the blinks should be during the eye calibration, then play the eye calibration scenario
+\item
+  Save impedances by following the instructions by Brain Vision.
+\item
+  Do the experiment.
+\end{itemize}
+
+\hypertarget{cleaning-and-maintenance}{%
+\chapter{Cleaning and maintenance}\label{cleaning-and-maintenance}}
+
+\begin{itemize}
+\tightlist
+\item
+  Clean the caps gently, very useful to use cotton pads, or simply the tap pressure to remove the gel.
+\item
+  Clean the working station.
+\item
+  Wipe the gel container.
+\item
+  If the gel is half empty or less, it is difficult to take it out, and it gets messy. Mix two gels in one container to make it easier to get the gel out.
+\end{itemize}
+
+\hypertarget{preprocessing}{%
+\chapter{Preprocessing steps}\label{preprocessing}}
+
+Ralie:
+1. Run \textbf{events\_from\_csv.R} in Z:/TOOLS/RiPE\_soc/Beha\_check
+This is the behavioural file which sends the events to the EEG machine. This step is to compare sent and received events later in Matlab.
+This creates a csv file in each participant folder named dat\_all\_triggers.csv
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\item
+  In EEG\_preprocess folder. Open \textbf{extract\_port\_events.m} Choose appropriate triggers, and rename the fields of the struct with \_onset, and \_id.
+  This creates a .m files named `all\_events\_and\_behav\_socRiPE.m' (in my case).
+\item
+  Open \textbf{preprocess\_brainamp\_data.m} Fix the name of the .eeg file, initials of participants, etc. and run the script. This creates LP\_socRiPE\_filtered.mat (for example, for subject LP).
+\item
+  Run \textbf{Epoch data.} epoch = Should be defined as the name of the field of the structure that is of interest. faces\_onset in my case.
+  This produces data epoched according to the offset values.
+\item
+\item
+\end{enumerate}
+
+\hypertarget{connection-to-the-grid}{%
+\chapter{Connecting to the grid}\label{connection-to-the-grid}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Open terminal (on a mac) or a Putty session (on Windows: \url{https://www.chiark.greenend.org.uk/~sgtatham/putty/})
+\item
+  Type `ssh \href{mailto:yourusername@ccn00.psy.gla.ac.uk}{\nolinkurl{yourusername@ccn00.psy.gla.ac.uk}}' and enter your password when asked (on a mac) or connect to host `ccn00.psy.gla.ac.uk' with your user name and password on Putty (on Windows)
+\end{enumerate}
+
+Windows: connect to host ccn00.psy.gla.ac.uk
+Terminal will prompt for account name: your user name
+Then password: password
+Then type vncserver
+Make a new password.
+Verify the password
+Use
+\url{https://www.tightvnc.com/download.php}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\item
+  Type `vncserver' in the terminal window (Putty should now put up a terminal window on Windows as well)
+\item
+  Make a note of your display number (e.g.~cn00.psy.gla.ac.uk:38)
+\item
+  Start your vnc client (chickenVNC for mac and tightVNC or realVNC for Windows - can be downloaded for free \url{https://www.tightvnc.com/download.php})
+\item
+  Type `ccn00' in the host box and your display number in the display box (for mac) or `ccn00:display number' in the server/host box (for Windows)
+\item
+  Enter your password
+\item
+  You should now see a desktop of the master node
+\item
+  Open a terminal in this new environment (the terminal option is in the Applications-System-Tools menu - in some instances a terminal shortcut might already exist in your navigation bar on the very top)
+\item
+  Connect to a free node (check node availability at ccn00.psy.gla.ac.uk/ganglia/) by typing `ssh compute-X-Y' where X, Y will correspond to the node ID from the link above
+\item
+  Set display environment by typing `setenv DISPLAY ccn00:43.0
+\item
+  To start matlab type `matlab \&'
+\item
+  To start FSL first type `source /usr/local/bin/fsl' then type `fsl \&'
+\end{enumerate}
+
+You can access our lab server in a terminal by typing: `cd /analyse/Project0130/'
+Once you setup your jobs you can simply close the desktop window (and even shutdown your personal computer). This will not kill the jobs you have started on the grid. You can log back in to check the progress of your jobs by following steps 6-8 above while using the same display number as before.
+To kill you vncsession all together (this will kill any jobs that might be running) simply type: `vncserver -kill :yourdisplaynumber'
+
+\hypertarget{LDA}{%
+\chapter{LDA process}\label{LDA}}
+
+Some \emph{significant} applications are demonstrated in this chapter.
+
+\hypertarget{example-one}{%
+\section{Example one}\label{example-one}}
+
+\hypertarget{example-two}{%
+\section{Example two}\label{example-two}}
+
+\hypertarget{remote-connection-to-office-computers}{%
+\chapter{Remote conenction to office computers}\label{remote-connection-to-office-computers}}
+
+\hypertarget{mac}{%
+\section{Mac}\label{mac}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Download microsoft remote desktop client \url{https://apps.apple.com/us/app/microsoft-remote-desktop-10/id1295203466?mt=12}
+\item
+  Install and open the client.
+\item
+  Choose PCs.
+\item
+  Enter the following settings:
+\end{enumerate}
+
+\begin{itemize}
+\tightlist
+\item
+  Connection name: your choice of nickname
+\item
+  PC name:
+\item
+  STAFF: ssdremote.gla.ac.uk
+\item
+  Username: campus\yourGUID (eg campus\abc1z)
+\item
+  Password: your GUID password
+\item
+  Full screen: deselect this if you want to be able to switch between the remote desktop and your Mac desktop more easily
+\item
+  All other settings: leave as default
+\end{itemize}
+
+\hypertarget{troubleshooting}{%
+\chapter{Troubleshooting}\label{troubleshooting}}
+
+If Syncbox connection error: USB reconnecting
+- check that bottom right corner of Brainvision says PassiveCap64.
+- if not passivecap64 \textgreater{} Open new project loading PassiveCap64.
+
+  \bibliography{book.bib,packages.bib}
+
+\end{document}

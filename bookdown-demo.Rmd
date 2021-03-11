@@ -1,0 +1,252 @@
+--- 
+title: "241 Lab Book"
+author: "Ralitsa Kostova"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: ralitsa-k/eeg-lab-book
+description: "This is a lab book for Philiastides' EEG Lab, The University of Glasgow."
+---
+
+
+```{r eval=FALSE}
+install.packages("bookdown")
+# or the development version
+# devtools::install_github("rstudio/bookdown")
+```
+
+Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.
+
+To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.name/tinytex/>.
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+<!--chapter:end:index.Rmd-->
+
+# Introduction {#intro}
+
+You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
+
+Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
+
+```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
+par(mar = c(4, 4, .1, .1))
+plot(pressure, type = 'b', pch = 19)
+```
+
+Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
+
+```{r nice-tab, tidy=FALSE}
+knitr::kable(
+  head(iris, 20), caption = 'Here is a nice table!',
+  booktabs = TRUE
+)
+```
+
+You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+
+<!--chapter:end:01-intro.Rmd-->
+
+# EEG-setup {#EEG-setup}
+
+
+Steps in short:
+
+* Head size.
+* Cz position.
+* Cap on. 
+* Alcohol wipe skin. 
+* Attach 3 electrodes. 
+* Full all with gel.
+* Rub all.
+* Fill again.
+* Go inside, attach to amps. 
+* Green = Amp1, yellow = Amp2.
+* Amps on.
+* Check Ground, Ref, forehead (fix)
+* Check impedance at 0-100, then 0-50, and 0-20 scale.
+* Fix half head - fill with gel. 
+* Fix other half - fill with gel.
+* Repeat rub and fill if necessary. 
+* Show teeth clenching and eye squeeze. 
+* Eye-calibration. 
+* Save impedance. 
+* Start task.
+
+
+Steps detailed: 
+
+* Sit the participant on a chair outside the booth.
+* Measure head circumference just above the eyebrows. 
+* Measure the position of Cz electrode.
+* Take the middle point between the nasion and the inion and mark it. 
+* Take the middle point between the ears and align with the first point, make a bigger mark on the skin.
+* Use the cap with appropriate size and position by adjusting Cz, so that the mark is visible. 
+* Pull the cap down tight, strap, and if necessary use the chest strap. 
+* Clean the skin above the left eyebrow, just left of the chin, and behind the left ear with alcohol wipes.
+* Attach the stickers to the 3 loose electrodes and attach the electrodes to the cleaned areas. 
+* Fill wach electrode with a syringe by holding pushin the electrodes close to the head, do not use too much gel. 
+* Avoid connecting electrodes with hair strands. 
+* Rub each hole with a cotton bud. 
+* Fill each electrode once again. 
+* Go inside the booth and attach the amp1 to the cable with green dot and amp2 to the cable with yellow. 
+* Turn the amps on. 
+* Check the ground, reference, and forehead impedance. 
+* Go to Data and check the impedance of the rest of the electrodes by changing the scale from 0-100, then 0-50, and then 0-20
+* Aim for green/yellow dots by sideways motion (separates hair), or circling motion (rubs gel), or 360 degree motion (consistently improves impedance).
+* Show the participant the monitoring mode to explain what clencing the teeth, and squeezing the eyes does, and why it should be avoided. 
+* Staying with their teeth slightly apart helps. 
+* Explain what the blinks should be during the eye calibration, then play the eye calibration scenario 
+* Save impedances by following the instructions by Brain Vision. 
+* Do the experiment. 
+
+
+
+
+
+
+<!--chapter:end:02-EEG-setup.Rmd-->
+
+# Cleaning and maintenance {#cleaning-and-maintenance}
+
+* Clean the caps gently, very useful to use cotton pads, or simply the tap pressure to remove the gel.
+* Clean the working station. 
+* Wipe the gel container. 
+* If the gel is half empty or less, it is difficult to take it out, and it gets messy. Mix two gels in one container to make it easier to get the gel out. 
+
+
+
+<!--chapter:end:03-cleaning-and-maintenance.Rmd-->
+
+# Preprocessing steps {#preprocessing}
+
+Ralie:
+1. Run **events_from_csv.R** in Z:/TOOLS/RiPE_soc/Beha_check
+This is the behavioural file which sends the events to the EEG machine. This step is to compare sent and received events later in Matlab. 
+This creates a csv file in each participant folder named dat_all_triggers.csv
+
+2. In EEG_preprocess folder. Open **extract_port_events.m** Choose appropriate triggers, and rename the fields of the struct with _onset, and _id. 
+This creates a .m files named 'all_events_and_behav_socRiPE.m' (in my case).
+
+3. Open **preprocess_brainamp_data.m** Fix the name of the .eeg file, initials of participants, etc. and run the script. This creates LP_socRiPE_filtered.mat (for example, for subject LP).
+
+4. Run **Epoch data.** epoch = Should be defined as the name of the field of the structure that is of interest. faces_onset in my case.
+This produces data epoched according to the offset values. 
+
+5. 
+
+4. 
+
+
+
+
+
+
+
+<!--chapter:end:03-preprocessing.Rmd-->
+
+# Connecting to the grid {#connection-to-the-grid}
+
+
+1. Open terminal (on a mac) or a Putty session (on Windows: https://www.chiark.greenend.org.uk/~sgtatham/putty/)
+
+2. Type ‘ssh yourusername@ccn00.psy.gla.ac.uk’ and enter your password when asked (on a mac) or connect to host 'ccn00.psy.gla.ac.uk' with your user name and password on Putty (on Windows)
+
+Windows: connect to host ccn00.psy.gla.ac.uk
+Terminal will prompt for account name: your user name
+Then password: password
+Then type vncserver 
+Make a new password.
+Verify the password 
+Use 
+https://www.tightvnc.com/download.php
+
+3. Type ‘vncserver’ in the terminal window (Putty should now put up a terminal window on Windows as well)
+
+4. Make a note of your display number (e.g. cn00.psy.gla.ac.uk:38)
+
+5. Start your vnc client (chickenVNC for mac and tightVNC or realVNC for Windows - can be downloaded for free https://www.tightvnc.com/download.php)
+
+6. Type ‘ccn00’ in the host box and your display number in the display box (for mac) or ‘ccn00:display number’ in the server/host box (for Windows)
+
+7. Enter your password
+
+8. You should now see a desktop of the master node
+
+9. Open a terminal in this new environment (the terminal option is in the Applications-System-Tools menu - in some instances a terminal shortcut might already exist in your navigation bar on the very top)
+
+10. Connect to a free node (check node availability at ccn00.psy.gla.ac.uk/ganglia/) by typing ‘ssh compute-X-Y’ where X, Y will correspond to the node ID from the link above
+
+11. Set display environment by typing ‘setenv DISPLAY ccn00:43.0
+
+12. To start matlab type ‘matlab &’
+
+13. To start FSL first type ‘source /usr/local/bin/fsl’ then type ‘fsl &’
+
+You can access our lab server in a terminal by typing: ‘cd /analyse/Project0130/’
+Once you setup your jobs you can simply close the desktop window (and even shutdown your personal computer). This will not kill the jobs you have started on the grid. You can log back in to check the progress of your jobs by following steps 6-8 above while using the same display number as before.
+To kill you vncsession all together (this will kill any jobs that might be running) simply type: ‘vncserver -kill :yourdisplaynumber’
+
+<!--chapter:end:04-connecting-to-the-grid.Rmd-->
+
+# LDA process {#LDA}
+
+Some _significant_ applications are demonstrated in this chapter.
+
+## Example one
+
+## Example two
+
+<!--chapter:end:04-LDA.Rmd-->
+
+# Remote conenction to office computers {#remote-connection-to-office-computers}
+
+
+## Mac
+
+1. Download microsoft remote desktop client https://apps.apple.com/us/app/microsoft-remote-desktop-10/id1295203466?mt=12
+
+2. Install and open the client.
+
+3. Choose PCs.
+
+4. Enter the following settings:
+
+* Connection name: your choice of nickname
+* PC name:
+* STAFF: ssdremote.gla.ac.uk
+* Username: campus\yourGUID (eg campus\abc1z)
+* Password: your GUID password
+* Full screen: deselect this if you want to be able to switch between the remote desktop and your Mac desktop more easily
+* All other settings: leave as default
+
+
+
+
+
+
+<!--chapter:end:05-remote-connection-to-office.Rmd-->
+
+# Troubleshooting {#troubleshooting}
+
+If Syncbox connection error: USB reconnecting
+- check that bottom right corner of Brainvision says PassiveCap64.
+- if not passivecap64 > Open new project loading PassiveCap64. 
+
+<!--chapter:end:05-troubleshooting.Rmd-->
+
+`r if (knitr:::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:06-references.Rmd-->
+
