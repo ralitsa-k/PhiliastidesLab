@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | 241 Lab Book</title>
+  <title>Chapter 5 Connecting to the grid | 241 Lab Book</title>
   <meta name="description" content="This is a lab book for Philiastides’ EEG Lab, The University of Glasgow." />
   <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | 241 Lab Book" />
+  <meta property="og:title" content="Chapter 5 Connecting to the grid | 241 Lab Book" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="ralitsa-k/eeg-lab-book" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | 241 Lab Book" />
+  <meta name="twitter:title" content="Chapter 5 Connecting to the grid | 241 Lab Book" />
   
   <meta name="twitter:description" content="This is a lab book for Philiastides’ EEG Lab, The University of Glasgow." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="troubleshooting.html"/>
-
+<link rel="prev" href="preprocessing.html"/>
+<link rel="next" href="LDA.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -170,25 +170,45 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
+<div id="connection-to-the-grid" class="section level1">
+<h1><span class="header-section-number">Chapter 5</span> Connecting to the grid</h1>
+<ol style="list-style-type: decimal">
+<li><p>Open terminal (on a mac) or a Putty session (on Windows: <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/" class="uri">https://www.chiark.greenend.org.uk/~sgtatham/putty/</a>)</p></li>
+<li><p>Type ‘ssh <a href="mailto:yourusername@ccn00.psy.gla.ac.uk" class="email">yourusername@ccn00.psy.gla.ac.uk</a>’ and enter your password when asked (on a mac) or connect to host ‘ccn00.psy.gla.ac.uk’ with your user name and password on Putty (on Windows)</p></li>
+</ol>
+<p>Windows: connect to host ccn00.psy.gla.ac.uk
+Terminal will prompt for account name: your user name
+Then password: password
+Then type vncserver
+Make a new password.
+Verify the password
+Use
+<a href="https://www.tightvnc.com/download.php" class="uri">https://www.tightvnc.com/download.php</a></p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Type ‘vncserver’ in the terminal window (Putty should now put up a terminal window on Windows as well)</p></li>
+<li><p>Make a note of your display number (e.g. cn00.psy.gla.ac.uk:38)</p></li>
+<li><p>Start your vnc client (chickenVNC for mac and tightVNC or realVNC for Windows - can be downloaded for free <a href="https://www.tightvnc.com/download.php" class="uri">https://www.tightvnc.com/download.php</a>)</p></li>
+<li><p>Type ‘ccn00’ in the host box and your display number in the display box (for mac) or ‘ccn00:display number’ in the server/host box (for Windows)</p></li>
+<li><p>Enter your password</p></li>
+<li><p>You should now see a desktop of the master node</p></li>
+<li><p>Open a terminal in this new environment (the terminal option is in the Applications-System-Tools menu - in some instances a terminal shortcut might already exist in your navigation bar on the very top)</p></li>
+<li><p>Connect to a free node (check node availability at ccn00.psy.gla.ac.uk/ganglia/) by typing ‘ssh compute-X-Y’ where X, Y will correspond to the node ID from the link above</p></li>
+<li><p>Set display environment by typing ‘setenv DISPLAY ccn00:43.0</p></li>
+<li><p>To start matlab type ‘matlab &amp;’</p></li>
+<li><p>To start FSL first type ‘source /usr/local/bin/fsl’ then type ‘fsl &amp;’</p></li>
+</ol>
+<p>You can access our lab server in a terminal by typing: ‘cd /analyse/Project0130/’
+Once you setup your jobs you can simply close the desktop window (and even shutdown your personal computer). This will not kill the jobs you have started on the grid. You can log back in to check the progress of your jobs by following steps 6-8 above while using the same display number as before.
+To kill you vncsession all together (this will kill any jobs that might be running) simply type: ‘vncserver -kill :yourdisplaynumber’</p>
 
-<div id="refs" class="references">
-<div>
-<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/">http://yihui.name/knitr/</a>.</p>
-</div>
-<div>
-<p>———. 2020. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://github.com/rstudio/bookdown">https://github.com/rstudio/bookdown</a>.</p>
-</div>
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="troubleshooting.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="preprocessing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="LDA.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -219,7 +239,7 @@ gitbook.start({
 "size": 2
 },
 "edit": {
-"link": "https://github.com/rstudio/bookdown-demo/edit/master/06-references.Rmd",
+"link": "https://github.com/rstudio/bookdown-demo/edit/master/04-connecting-to-the-grid.Rmd",
 "text": "Edit"
 },
 "history": {
