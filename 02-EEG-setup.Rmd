@@ -1,4 +1,4 @@
-# EEG-setup {#eeg-setup}
+# EEG-setup {#EEG-setup}
 
 
 Steps in short:

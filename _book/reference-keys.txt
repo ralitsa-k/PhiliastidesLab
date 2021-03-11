@@ -1,9 +1,12 @@
 fig:nice-fig
 tab:nice-tab
-prerequisites
 intro
 eeg-setup
-cleaning-and-maintenance
-connection-to-the-grid
-remote-connection-to-office-computers
-mac
+preprocessing-steps
+applications
+example-one
+example-two
+troubleshooting
+EEG-setup
+preprocessing
+LDA
