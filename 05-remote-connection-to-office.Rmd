@@ -1,0 +1,25 @@
+# Remote conenction to office computers {#remote-connection-to-office-computers}
+
+
+## Mac
+
+1. Download microsoft remote desktop client https://apps.apple.com/us/app/microsoft-remote-desktop-10/id1295203466?mt=12
+
+2. Install and open the client.
+
+3. Choose PCs.
+
+4. Enter the following settings:
+
+* Connection name: your choice of nickname
+* PC name:
+* STAFF: ssdremote.gla.ac.uk
+* Username: campus\yourGUID (eg campus\abc1z)
+* Password: your GUID password
+* Full screen: deselect this if you want to be able to switch between the remote desktop and your Mac desktop more easily
+* All other settings: leave as default
+
+
+
+
+
